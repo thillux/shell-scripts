@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ -e /proc/cpuinfo ]; then
+  # proc support, maybe on Linux
+  NUMCPUS=$((`cat /proc/cpuinfo | grep processor | wc -l`))
+else
+  # most likely BSD / OSX
+  NUMCPUS=$((`sysctl hw.ncpu | awk '{print $2}'`))
+fi
+
+echo "We can use $NUMCPUS cores!"
