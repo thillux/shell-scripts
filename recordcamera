@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ffmpeg -f alsa -i hw:1 -f video4linux2 -r 25 -i /dev/video1 -y webcam.mkv
